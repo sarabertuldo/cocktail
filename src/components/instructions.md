@@ -12,3 +12,16 @@ We will also be creating a group project with everything we've learned so far. T
 - Proper branching whether it is worked on as together or split up into pieces for different members to work on.
 
 https://www.thecocktaildb.com/api.php
+
+## Order of Attack
+
+- complete login page
+- complete search page
+  - complete display page
+- attach redux
+
+OPTIONAL:
+
+- stylize
+- randomize search
+- sign up for login page
