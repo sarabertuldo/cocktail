@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 import DisplayPage from "../DisplayPage/DisplayPage";
 import "./SearchPage.css";
-import { connect } from "react-redux";
-import { setSearch, addFavorite, deleteFavorite } from "../../redux/actions";
-
-function SearchPage() {
+export default function SearchPage() {
   const [name, setName] = useState("");
   const [ingredient, setIngredient] = useState("");
   const [limit, setLimit] = useState(25);
   const [drinks, setDrinks] = useState([]);
-
   const url = "https://www.thecocktaildb.com/api/json/v1/1/";
-
   async function getDrinkByName(name) {
     let response = await fetch(`${url}search.php?s=${name}`);
     let json = await response.json();
@@ -123,35 +118,22 @@ function SearchPage() {
       >
         Search Ingredient
       </button>
-      <div>
-        {drinks.length !== 0 && (
-          <DisplayPage key={drinks[1]} drink={drinks}></DisplayPage>
-        )}
-
-        {/* {props.drinks.map((v) => (
+      {drinks.length !== 0 && (
+        <DisplayPage key={drinks[1]} drink={drinks}></DisplayPage>
+      )}
+      {/* <div>
+        {error.length > 0 && <h1>{error}</h1>}
+        {error.length === 0 &&
+          props.drinks.map((v) => (
             <DisplayPage
               key={v.id}
               drink={v}
               isFavorite={faveIds.includes(v.id)}
               deleteFavorite={props.deleteFavorite}
               addFavorite={props.addFavorite}
-            /> ))} */}
-      </div>
+            />
+          ))}
+      </div> */}
     </>
   );
 }
-const mapDispatchToProps = {
-  setSearch,
-  addFavorite,
-  deleteFavorite,
-};
-
-function mapStateToProps(state) {
-  return {
-    globalState: state,
-    gifs: state.search,
-    favorites: state.favorites,
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchPage);
